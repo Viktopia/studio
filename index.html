@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viktopia Studio Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f4f9;
+        }
+        .gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+    </style>
+</head>
+<body class="font-sans leading-normal tracking-normal text-gray-800">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WDGXW6T5F7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-WDGXW6T5F7');
+    </script>
+
+    <!-- Header Section -->
+    <header class="gradient text-white py-6">
+        <div class="container mx-auto text-center">
+            <img src="logo.png" alt="Viktopia Studio Logo" class="h-16 mx-auto mb-4">
+            <h1 class="text-3xl font-bold">Viktopia Studio</h1>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto py-12 px-4">
+        <!-- About Section -->
+        <section class="text-center mb-12">
+            <h2 class="text-5xl font-extrabold mb-6 text-gray-900">Welcome to Viktopia Studio</h2>
+            <p class="text-xl text-gray-600">Showcasing our latest projects and designs.</p>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section>
+            <h3 class="text-4xl font-bold mb-10 text-center text-gray-900">Our Projects</h3>
+            <div class="flex flex-col items-center space-y-12">
+                <!-- Email Service Checker -->
+                <a href="https://emailservicechecker.com/" class="bg-white shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 w-full max-w-md">
+                    <img src="https://raw.githubusercontent.com/Viktopia/email-service-checker/master/logo.webp" alt="Email Service Checker Logo" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h4 class="text-2xl font-bold mb-3">Email Service Checker</h4>
+                        <p class="text-gray-700">A handy web tool that identifies the email service provider for a given domain or email address, helping sales teams target users of services like Google Workspace, Microsoft 365, and Zoho Mail.</p>
+                    </div>
+                </a>
+                <!-- sbomify -->
+                <a href="https://sbomify.com" class="bg-white shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 w-full max-w-md">
+                    <img src="sbomify-logo.png" alt="sbomify Logo" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h4 class="text-2xl font-bold mb-3">sbomify</h4>
+                        <p class="text-gray-700">A comprehensive platform for managing, updating, and sharing Software Bill of Materials (SBOMs). It streamlines interactions between buyers and software vendors, ensuring everyone has access to the latest SBOMs.</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-6">
+        <div class="container mx-auto text-center">
+            <p class="mb-4">&copy; 2024 Viktopia UK Ltd, DBA Viktopia Studio. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

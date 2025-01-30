@@ -5,12 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Viktopia Studio Portfolio</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body {
-            background-color: #f4f4f9;
+            background-color: #f8f9fa;
         }
-        .gradient {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .hero-gradient {
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+        }
+        .project-card {
+            transition: all 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        .github-icon {
+            transition: all 0.2s ease;
+        }
+        .github-icon:hover {
+            color: #4a5568;
         }
     </style>
     <!-- SEO Metadata -->
@@ -39,75 +52,148 @@
         gtag('config', 'G-WDGXW6T5F7');
     </script>
 
-    <!-- Header Section -->
-    <header class="gradient text-white py-6">
-        <div class="container mx-auto text-center">
-            <img src="img/logo.png" alt="Viktopia Studio Logo" class="h-16 mx-auto mb-4">
-            <h1 class="text-3xl font-bold">Viktopia Studio</h1>
+    <!-- Add this function in the head section after the existing GA4 script -->
+    <script>
+        function trackOutboundLink(category, label) {
+            gtag('event', 'click', {
+                'event_category': category,
+                'event_label': label
+            });
+        }
+    </script>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient text-white py-20">
+        <div class="container mx-auto px-6">
+            <div class="max-w-5xl mx-auto">
+                <h1 class="text-5xl font-bold mb-8">Viktopia Studio</h1>
+                <p class="text-xl leading-relaxed mb-8">
+                    We build open-core software solutions that address real-world challenges. Our philosophy is rooted in
+                    creating sustainable, problem-focused products that start with a single dedicated user - ourselves.
+                    Through open-source collaboration and practical innovation, we're crafting the future of software,
+                    one solution at a time.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#portfolio" class="bg-white text-gray-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                        View Our Projects
+                    </a>
+                    <a href="https://github.com/viktopia"
+                       onclick="trackOutboundLink('social', 'hero_github')"
+                       class="border border-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-colors">
+                        GitHub
+                    </a>
+                </div>
+            </div>
         </div>
-    </header>
+    </section>
 
     <!-- Main Content -->
-    <main class="container mx-auto py-12 px-4">
-        <!-- About Viktopia Studio Section -->
-        <section class="mb-12">
-            <div class="max-w-3xl mx-auto text-center">
-                <h3 class="text-4xl font-bold mb-6 text-gray-900">About Viktopia Studio</h3>
-                <p class="text-lg text-gray-700">
-                    Viktopia Studio is an indie software company dedicated to creating innovative solutions that address
-                    real-world problems we've personally encountered. By focusing on solving issues that are not widely
-                    recognized or are domain-specific, we ensure that our projects are both unique and essential. Our vision
-                    is not to build unicorns but to develop self-sufficient products and services that genuinely solve
-                    problems. Every project at Viktopia Studio is bootstrapped, emphasizing our commitment to sustainability
-                    and practicality. This approach guarantees that our solutions are grounded in real needs, starting with
-                    at least one dedicated user - ourselves.
-                </p>
+    <main class="container mx-auto py-16 px-6">
+        <!-- Mission Statement -->
+        <section class="mb-20">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold mb-8 text-center">Our Approach</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="text-center p-6">
+                        <div class="text-4xl mb-4">🎯</div>
+                        <h3 class="text-xl font-semibold mb-3">Problem-First</h3>
+                        <p>We focus on solving real problems we've encountered, ensuring our solutions have immediate practical value.</p>
+                    </div>
+                    <div class="text-center p-6">
+                        <div class="text-4xl mb-4">🌱</div>
+                        <h3 class="text-xl font-semibold mb-3">Open Core</h3>
+                        <p>We believe in the power of open source, building sustainable businesses while fostering community collaboration.</p>
+                    </div>
+                    <div class="text-center p-6">
+                        <div class="text-4xl mb-4">💡</div>
+                        <h3 class="text-xl font-semibold mb-3">Sustainable Growth</h3>
+                        <p>Our projects are bootstrapped and focused on long-term value creation rather than rapid scaling.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Portfolio Section -->
-        <section>
-            <h3 class="text-4xl font-bold mb-10 text-center text-gray-900">Our Projects</h3>
-            <div class="flex flex-col items-center space-y-12">
-                <!-- Email Service Checker -->
-                <a href="https://emailservicechecker.com/" class="bg-white shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 w-full max-w-md">
-                    <img src="https://raw.githubusercontent.com/Viktopia/email-service-checker/master/logo.webp" alt="Email Service Checker Logo" class="w-full h-56 object-cover">
-                    <div class="p-6">
-                        <h4 class="text-2xl font-bold mb-3">Email Service Checker</h4>
-                        <p class="text-gray-700">A handy web tool that identifies the email service provider for a given domain or email address, helping sales teams target users of services like Google Workspace, Microsoft 365, and Zoho Mail.</p>
-                    </div>
-                </a>
+        <section id="portfolio">
+            <h2 class="text-3xl font-bold mb-12 text-center">Our Projects</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- sbomify -->
-                <a href="https://sbomify.com" class="bg-white shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 w-full max-w-md">
-                    <img src="img/sbomify-logo.svg" alt="sbomify Logo" class="w-full h-56 object-cover">
+                <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <img src="img/sbomify-logo.svg" alt="sbomify Logo" class="w-full h-48 object-cover">
                     <div class="p-6">
-                        <h4 class="text-2xl font-bold mb-3">sbomify</h4>
-                        <p class="text-gray-700">A comprehensive platform for managing, updating, and sharing Software Bill of Materials (SBOMs). sbomify streamlines interactions between buyers and software vendors, ensuring everyone has access to the latest SBOMs.</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-2xl font-bold">sbomify</h3>
+                            <a href="https://github.com/sbomify/sbomify"
+                               onclick="trackOutboundLink('github', 'sbomify')"
+                               class="text-gray-600 hover:text-gray-900 github-icon">
+                                <i class="fab fa-github text-2xl"></i>
+                            </a>
+                        </div>
+                        <p class="text-gray-600 mb-4">A comprehensive platform for managing Software Bill of Materials (SBOMs), streamlining security compliance and software supply chain transparency.</p>
+                        <a href="https://sbomify.com"
+                           onclick="trackOutboundLink('project', 'sbomify')"
+                           class="text-blue-600 hover:text-blue-800 font-semibold">Learn More →</a>
                     </div>
-                </a>
-                <!-- Nerding Out With Viktor -->
-                <a href="https://vpetersson.com/podcast/" class="bg-white shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 w-full max-w-md">
-                    <img src="img/nerding-out-with-viktor-logo.png" alt="Nerding Out With Viktor" class="w-full h-56 object-cover">
-                    <div class="p-6">
-                        <h4 class="text-2xl font-bold mb-3">Nerding Out With Viktor</h4>
-                        <p class="text-gray-700">“Nerding Out with Viktor” is your gateway to the tech world, featuring deep dives with leading experts in AI, software development, cybersecurity, and hardware innovations. Hosted by Viktor, an experienced entrepreneur with a knack for breaking down complex tech concepts into engaging and understandable discussions, this podcast is perfect for tech enthusiasts, aspiring entrepreneurs, and anyone curious about the rapidly evolving tech landscape. Subscribe to “Nerding Out with Viktor” for stimulating conversations that blend nerdy passion with entrepreneurial insight, and join a community where technology and innovation come together in captivating discussions.</p>
-                    </div>
+                </div>
+
                 <!-- notipus -->
-                <a href="https://notipus.com/" class="bg-white shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 w-full max-w-md">
-                    <img src="img/notipus-logo.png" alt="notipus Logo" class="w-full h-56 object-cover">
+                <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <img src="img/notipus-logo.png" alt="notipus Logo" class="w-full h-48 object-cover">
                     <div class="p-6">
-                        <h4 class="text-2xl font-bold mb-3">notipus</h4>
-                        <p class="text-gray-700">Notipus is a versatile webhook integration and notification service designed to keep you informed in real-time. Seamlessly integrating with both Shopify and Stripe, Notipus captures order details, payment statuses, and subscription updates, sending instant notifications to your specified Slack channel. With user-friendly setup, robust security, and customizable notifications, Notipus ensures you never miss critical eCommerce and financial events, making it an essential tool for efficient business management.</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-2xl font-bold">notipus</h3>
+                            <a href="https://github.com/viktopia/notipus"
+                               onclick="trackOutboundLink('github', 'notipus')"
+                               class="text-gray-600 hover:text-gray-900 github-icon">
+                                <i class="fab fa-github text-2xl"></i>
+                            </a>
+                        </div>
+                        <p class="text-gray-600 mb-4">An intelligent webhook integration service that transforms eCommerce events into actionable Slack notifications.</p>
+                        <a href="https://notipus.com"
+                           onclick="trackOutboundLink('project', 'notipus')"
+                           class="text-blue-600 hover:text-blue-800 font-semibold">Learn More →</a>
                     </div>
-                </a>
-                </a>
+                </div>
+
+                <!-- Email Service Checker -->
+                <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <img src="https://raw.githubusercontent.com/Viktopia/email-service-checker/master/logo.webp" alt="Email Service Checker Logo" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-2xl font-bold">Email Service Checker</h3>
+                            <a href="https://github.com/Viktopia/email-service-checker"
+                               onclick="trackOutboundLink('github', 'email_service_checker')"
+                               class="text-gray-600 hover:text-gray-900 github-icon">
+                                <i class="fab fa-github text-2xl"></i>
+                            </a>
+                        </div>
+                        <p class="text-gray-600 mb-4">A simple yet powerful tool for identifying email service providers, helping sales teams optimize their outreach strategies.</p>
+                        <a href="https://emailservicechecker.com"
+                           onclick="trackOutboundLink('project', 'email_service_checker')"
+                           class="text-blue-600 hover:text-blue-800 font-semibold">Learn More →</a>
+                    </div>
+                </div>
+
+                <!-- Nerding Out With Viktor -->
+                <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <img src="img/nerding-out-with-viktor-logo.png" alt="Nerding Out With Viktor" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-2xl font-bold">Nerding Out With Viktor</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">A tech podcast exploring the intersection of entrepreneurship and technology through engaging conversations with industry experts.</p>
+                        <a href="https://vpetersson.com/podcast/"
+                           onclick="trackOutboundLink('project', 'podcast')"
+                           class="text-blue-600 hover:text-blue-800 font-semibold">Listen Now →</a>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-6">
-        <div class="container mx-auto text-center">
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
             <p class="mb-4">&copy; 2024 Viktopia UK Ltd, DBA Viktopia Studio. All rights reserved.</p>
         </div>
     </footer>

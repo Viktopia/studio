@@ -1,0 +1,19 @@
+{{- if hugo.IsProduction -}}
+{{- with site.Params.gaMeasurementId -}}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ . }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', '{{ . }}');
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[data-gtag-category]');
+    if (!a) return;
+    gtag('event', 'click', {
+      event_category: a.dataset.gtagCategory,
+      event_label: a.dataset.gtagLabel || a.href
+    });
+  });
+</script>
+{{- end -}}
+{{- end -}}

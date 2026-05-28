@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="{{ site.LanguageCode | default "en" }}" class="paper-grain paper-vignette">
+<head>
+  {{ partial "head.html" . }}
+</head>
+<body class="relative min-h-screen overflow-x-hidden">
+  <div class="relative z-10">
+    {{ partial "header.html" . }}
+    <main id="content">
+      {{ block "main" . }}{{ end }}
+    </main>
+    {{ partial "footer.html" . }}
+  </div>
+  {{ partial "analytics.html" . }}
+</body>
+</html>

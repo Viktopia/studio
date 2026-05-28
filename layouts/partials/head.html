@@ -1,0 +1,61 @@
+{{- $title := cond .IsHome site.Title (printf "%s · %s" .Title site.Title) -}}
+{{- $description := .Params.description | default site.Params.description -}}
+{{- $url := .Permalink -}}
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#eff1f5">
+<meta name="color-scheme" content="light">
+
+<title>{{ $title }}</title>
+<meta name="description" content="{{ $description }}">
+<meta name="author" content="{{ site.Params.author.name }}">
+<link rel="canonical" href="{{ $url }}">
+
+{{- /* Favicons — inline SVG monogram, no external requests */ -}}
+{{- $favicon := `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='10' fill='%23eff1f5'/><text x='32' y='44' text-anchor='middle' font-family='Georgia, serif' font-size='40' font-style='italic' fill='%23d20f39'>V</text></svg>` -}}
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;charset=utf-8,{{ $favicon | safeHTMLAttr }}">
+<link rel="apple-touch-icon" href="data:image/svg+xml;charset=utf-8,{{ $favicon | safeHTMLAttr }}">
+
+{{- /* Open Graph + Twitter */ -}}
+<meta property="og:site_name" content="{{ site.Title }}">
+<meta property="og:type" content="{{ cond .IsHome "website" "article" }}">
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $description }}">
+<meta property="og:url" content="{{ $url }}">
+<meta property="og:locale" content="en_US">
+{{- with resources.Get "images/logo.png" }}
+  {{- $og := .Resize "1200x630 webp q85 Lanczos" -}}
+  <meta property="og:image" content="{{ $og.Permalink }}">
+  <meta property="og:image:type" content="image/webp">
+  <meta property="og:image:width" content="{{ $og.Width }}">
+  <meta property="og:image:height" content="{{ $og.Height }}">
+{{- end }}
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ $title }}">
+<meta name="twitter:description" content="{{ $description }}">
+{{- with site.Params.twitterHandle }}
+<meta name="twitter:site" content="{{ . }}">
+<meta name="twitter:creator" content="{{ . }}">
+{{- end }}
+
+{{- /* Preconnect for Google Fonts only — fonts loaded with display=swap */ -}}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+
+{{- /* Tailwind v4 via Hugo Pipes */ -}}
+{{- with resources.Get "css/main.css" }}
+  {{- $opts := dict "minify" hugo.IsProduction "inlineImports" true -}}
+  {{- $css := . | css.TailwindCSS $opts -}}
+  {{- if hugo.IsProduction }}
+    {{- $css = $css | fingerprint -}}
+    <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" crossorigin="anonymous">
+  {{- else }}
+    <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+  {{- end }}
+{{- end }}
+
+{{- /* Structured data */ -}}
+{{ partial "schema.html" . }}

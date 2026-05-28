@@ -1,0 +1,28 @@
+<section id="catalogue" class="relative py-20 md:py-28 border-t border-[color:var(--color-rule)] bg-[color:var(--color-paper-soft)]">
+  <div class="page-container">
+    <div class="grid grid-cols-12 gap-8 items-end mb-12 md:mb-16">
+      <div class="col-span-12 md:col-span-8">
+        <p class="chapter-mark">02 / Catalogue</p>
+        <h2 class="section-headline mt-5">
+          Projects <em>in flight</em>.
+        </h2>
+      </div>
+      <div class="col-span-12 md:col-span-4">
+        <p class="text-[color:var(--color-ink-soft)] leading-relaxed">
+          A working register of what we ship and tend. Each is open at the
+          source, run as its own small concern, and updated when the work
+          deserves it — not on a marketing calendar.
+        </p>
+      </div>
+    </div>
+
+    {{ $projects := where site.RegularPages "Section" "projects" }}
+    {{ $projects = $projects.ByWeight }}
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+      {{ range $projects }}
+        {{ partial "project-card.html" . }}
+      {{ end }}
+    </div>
+  </div>
+</section>

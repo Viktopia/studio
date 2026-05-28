@@ -1,0 +1,64 @@
+{{- $orgImage := "" -}}
+{{- with resources.Get "images/logo.png" -}}
+  {{- $orgImage = (.Resize "512x512 webp q85").Permalink -}}
+{{- end -}}
+
+{{- $projects := where site.RegularPages "Section" "projects" -}}
+
+{{- $org := dict
+  "@type" "Organization"
+  "name" site.Title
+  "legalName" site.Params.legalName
+  "alternateName" site.Params.dba
+  "url" site.BaseURL
+  "logo" $orgImage
+  "description" site.Params.description
+  "founder" (dict
+    "@type" "Person"
+    "name" site.Params.author.name
+    "url" site.Params.author.url
+  )
+  "sameAs" (slice
+    site.Params.social.github
+    site.Params.social.twitter
+    site.Params.social.linkedin
+  )
+-}}
+
+{{- $website := dict
+  "@type" "WebSite"
+  "name" site.Title
+  "url" site.BaseURL
+  "inLanguage" "en"
+  "publisher" (dict "@type" "Organization" "name" site.Title)
+-}}
+
+{{- $itemList := dict -}}
+{{- if .IsHome -}}
+  {{- $items := slice -}}
+  {{- range $i, $p := $projects -}}
+    {{- $items = $items | append (dict
+      "@type" "ListItem"
+      "position" (add $i 1)
+      "name" $p.Title
+      "url" ($p.Params.link | default $p.Permalink)
+      "description" $p.Params.description
+    ) -}}
+  {{- end -}}
+  {{- $itemList = dict
+    "@type" "ItemList"
+    "name" "Viktopia Studio — Projects"
+    "itemListElement" $items
+  -}}
+{{- end -}}
+
+{{- $graph := slice $org $website -}}
+{{- if .IsHome -}}
+  {{- $graph = $graph | append $itemList -}}
+{{- end -}}
+
+{{- $payload := dict "@context" "https://schema.org" "@graph" $graph -}}
+
+<script type="application/ld+json">
+{{ $payload | jsonify (dict "indent" "  ") | safeJS }}
+</script>

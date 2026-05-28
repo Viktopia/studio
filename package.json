@@ -1,0 +1,19 @@
+{
+  "name": "viktopia-studio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Viktopia Studio portfolio site (Hugo + Tailwind v4)",
+  "scripts": {
+    "dev": "hugo server --bind 0.0.0.0 --buildDrafts",
+    "build": "hugo --minify",
+    "clean": "rm -rf public resources"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.0",
+    "tailwindcss": "^4.1.0"
+  },
+  "trustedDependencies": [
+    "@tailwindcss/oxide"
+  ],
+  "packageManager": "bun@1.3.13"
+}

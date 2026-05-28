@@ -1,0 +1,61 @@
+baseURL = "https://studio.viktopia.io/"
+languageCode = "en-us"
+title = "Viktopia Studio"
+defaultContentLanguage = "en"
+enableRobotsTXT = true
+enableGitInfo = false
+disableKinds = ["taxonomy", "term"]
+canonifyURLs = true
+summaryLength = 30
+
+[caches]
+  [caches.images]
+    dir = ":resourceDir/_gen"
+    maxAge = -1
+
+[imaging]
+  quality = 82
+  resampleFilter = "Lanczos"
+  hint = "photo"
+
+  [imaging.exif]
+    disableDate = true
+    disableLatLong = true
+
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true
+
+[minify]
+  minifyOutput = true
+  [minify.tdewolff.html]
+    keepDocumentTags = true
+    keepEndTags = true
+    keepQuotes = true
+
+[params]
+  description = "Viktopia Studio is an indie practice making open-core software products that earn their keep. Built in public, designed to last."
+  tagline = "An indie software practice"
+  edition = "Dispatch №01"
+  legalName = "Viktopia UK Ltd"
+  dba = "Viktopia Studio"
+  email = "hello@viktopia.io"
+  ogImage = "images/og-cover.png"
+  twitterHandle = "@vpetersson"
+  gaMeasurementId = "G-WDGXW6T5F7"
+
+  [params.author]
+    name = "Viktor Petersson"
+    url = "https://vpetersson.com"
+
+  [params.social]
+    github = "https://github.com/viktopia"
+    twitter = "https://twitter.com/vpetersson"
+    linkedin = "https://www.linkedin.com/in/vpetersson/"
+
+[outputs]
+  home = ["HTML"]
+
+[security.exec]
+  allow = ["^(dart-)?sass(-embedded)?$", "^go$", "^npx$", "^postcss$", "^tailwindcss$", "^bun$", "^node$"]
+  osEnv = ["(?i)^((HTTPS?|NO)_PROXY|PATH(EXT)?|APPDATA|TE?MP|TERM|GO\\w+|(XDG_CONFIG_)?HOME|USERPROFILE)$"]

@@ -1,70 +1,32 @@
 {{- $year := now.Format "2006" -}}
-<footer id="colophon" class="relative pt-20 pb-12 border-t border-[color:var(--color-rule)]">
+<footer id="contact" class="relative pt-20 pb-12 border-t border-[color:var(--color-rule)]">
   <div class="page-container">
 
-    <div class="grid grid-cols-12 gap-8">
-      <div class="col-span-12 md:col-span-7">
-        <p class="chapter-mark">03 / Colophon</p>
-        <h2 class="section-headline mt-5">
-          A small studio,<br>
-          <em>built to outlast</em><br>
-          the news cycle.
-        </h2>
-        <p class="mt-6 max-w-xl text-[color:var(--color-ink-soft)] leading-relaxed">
-          If any of this resonates and you'd like to talk shop — about
-          SBOMs, founder-led growth, indie operations, or anything in
-          orbit — the door's open.
-        </p>
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a href="mailto:{{ site.Params.email }}" class="btn btn-primary">
-            Say hello
-            <span class="arrow" aria-hidden="true">→</span>
-          </a>
-          <a href="{{ site.Params.social.github }}" rel="me noopener" class="btn btn-ghost">GitHub</a>
-        </div>
+    <div class="max-w-2xl">
+      <h2 class="section-headline">
+        A small studio,<br>
+        <em>built to outlast</em><br>
+        the news cycle.
+      </h2>
+      <p class="mt-6 text-[color:var(--color-ink-soft)] leading-relaxed">
+        If any of this resonates and you'd like to talk shop — about
+        SBOMs, founder-led growth, indie operations, or anything in
+        orbit — the door's open.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="mailto:{{ site.Params.email }}" class="btn btn-primary">
+          Say hello
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+        <a href="{{ site.Params.social.github }}" rel="me noopener" class="btn btn-ghost">GitHub</a>
       </div>
-
-      <dl class="colophon col-span-12 md:col-span-5 grid grid-cols-2 gap-x-6 gap-y-1 content-start">
-        <div>
-          <dt>Operated by</dt>
-          <dd>{{ site.Params.legalName }}</dd>
-        </div>
-        <div>
-          <dt>Trading as</dt>
-          <dd><em class="italic">{{ site.Params.dba }}</em></dd>
-        </div>
-        <div>
-          <dt>Founder</dt>
-          <dd>
-            <a class="hover:text-[color:var(--color-signal)] transition"
-               href="{{ site.Params.author.url }}" rel="noopener">
-              {{ site.Params.author.name }}
-            </a>
-          </dd>
-        </div>
-        <div>
-          <dt>Edition</dt>
-          <dd>{{ site.Params.edition }}</dd>
-        </div>
-        <div>
-          <dt>Set in</dt>
-          <dd><em class="italic">Instrument Serif</em> &amp; Geist</dd>
-        </div>
-        <div>
-          <dt>Built with</dt>
-          <dd>Hugo · Tailwind · Bun</dd>
-        </div>
-      </dl>
     </div>
 
     <hr class="rule mt-20">
 
-    <div class="mt-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+    <div class="mt-6">
       <p class="label">
         © {{ $year }} {{ site.Params.legalName }}, DBA {{ site.Params.dba }}. All rights reserved.
-      </p>
-      <p class="label">
-        Hosted at <span class="text-[color:var(--color-ink)]">studio.viktopia.io</span>
       </p>
     </div>
   </div>

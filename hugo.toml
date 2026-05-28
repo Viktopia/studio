@@ -36,7 +36,6 @@ summaryLength = 30
 [params]
   description = "Viktopia Studio is an indie practice making open-core software products that earn their keep. Built in public, designed to last."
   tagline = "An indie software practice"
-  edition = "Dispatch №01"
   legalName = "Viktopia UK Ltd"
   dba = "Viktopia Studio"
   email = "hello@viktopia.io"

@@ -41,12 +41,17 @@
 
   <div class="card-media">
     {{ if $imgSrc }}
-      <img src="{{ $imgSrc }}"
-           alt="{{ $imgAlt }}"
-           loading="lazy"
-           decoding="async"
-           {{ if $imgW }}width="{{ $imgW }}" height="{{ $imgH }}"{{ end }}
-           itemprop="image">
+      {{- /* Every logo sits in the same tile, whatever its source shape.
+             logoFit "cover" is for artwork that is already a full square
+             with its own background; everything else is inset. */ -}}
+      <div class="logo-tile{{ if eq $p.Params.logoFit "cover" }} logo-tile--cover{{ end }}">
+        <img src="{{ $imgSrc }}"
+             alt="{{ $imgAlt }}"
+             loading="lazy"
+             decoding="async"
+             {{ if $imgW }}width="{{ $imgW }}" height="{{ $imgH }}"{{ end }}
+             itemprop="image">
+      </div>
     {{ else }}
       <div class="w-32 h-32 grid place-items-center font-[var(--font-display)] italic text-6xl text-[color:var(--color-signal)]">
         {{ substr $p.Title 0 1 }}

@@ -10,4 +10,5 @@ description: "Long-form conversations with operators, founders, and engineers ab
 image: "nerding-out-with-viktor-logo.png"
 link: "https://vpetersson.com/podcast/"
 tags: ["podcast", "founders"]
+logoFit: "cover"
 ---

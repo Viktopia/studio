@@ -6,9 +6,10 @@ weight: 3
 category: "Open-source tool"
 year: "2024"
 stack: "TypeScript · Bun"
-description: "A no-fuss lookup that tells you who hosts a domain's email — DNS forensics distilled into one helpful answer for sales and ops teams."
+description: "A free email domain checker: enter any domain to see who hosts its mail, then check its SPF, DKIM, DMARC, MTA-STS, DANE and BIMI setup. Runs in the browser against public DNS."
 image: "email-service-checker-logo.webp"
 link: "https://emailservicechecker.com"
 github: "https://github.com/Viktopia/email-service-checker"
-tags: ["DNS", "developer tools"]
+tags: ["DNS", "email security", "developer tools"]
+logoFit: "cover"
 ---
